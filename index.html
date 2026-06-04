@@ -6,10 +6,12 @@
   <title>Portal Edukasi Pancasila</title>
   <style>
     :root {
-      --primary-color: #b71c1c; /* Merah Marun */
-      --secondary-color: #0d47a1; /* Biru Gelap */
-      --sidebar-bg: #1a252f; /* Gelap Premium */
-      --bg-color: #f4f6f9;
+      /* Mengubah Tema Menjadi Nuansa Ungu */
+      --primary-color: #8e24aa; /* Ungu Utama */
+      --secondary-color: #4a148c; /* Ungu Gelap */
+      --sidebar-grad-start: #f3e5f5; /* Ungu Muda Sangat Terang */
+      --sidebar-grad-end: #e1bee7; /* Ungu Muda Lembut */
+      --bg-color: #f8f9fc;
       --text-color: #333333;
       --card-bg: #ffffff;
     }
@@ -29,73 +31,110 @@
       overflow-x: hidden;
     }
 
-    /* --- SIDEBAR (KIRI) --- */
+    /* --- SIDEBAR (KIRI) DENGAN GRADASI UNGU MUDA --- */
     aside {
-      width: 300px;
-      background-color: var(--sidebar-bg);
-      color: #ecf0f1;
+      width: 400px;
+      /* Background Gradasi Ungu Muda */
+      background: linear-gradient(180deg, var(--sidebar-grad-start) 0%, var(--sidebar-grad-end) 100%);
+      color: #333; /* Teks disesuaikan menjadi gelap agar terbaca */
       display: flex;
       flex-direction: column;
       position: fixed;
       top: 0;
       bottom: 0;
       left: 0;
-      padding: 20px;
+      padding: 25px 20px;
       z-index: 100;
       overflow-y: auto;
+      border-right: 1px solid #d1c4e9;
+      box-shadow: 2px 0 15px rgba(103, 58, 183, 0.1);
+    }
+
+    /* Mempercantik Scrollbar di Sidebar */
+    aside::-webkit-scrollbar {
+      width: 6px;
+    }
+    aside::-webkit-scrollbar-thumb {
+      background-color: #ce93d8;
+      border-radius: 4px;
     }
 
     .brand {
       text-align: center;
       padding-bottom: 20px;
-      border-bottom: 1px solid #34495e;
-      margin-bottom: 20px;
+      border-bottom: 2px dashed #ce93d8;
+      margin-bottom: 10px;
     }
 
     .brand h2 {
-      font-size: 1.5rem;
-      color: #fff;
-      font-weight: 700;
+      font-size: 1.6rem;
+      color: var(--secondary-color);
+      font-weight: 800;
+      letter-spacing: 0.5px;
     }
 
-    .menu-title {
+    /* Kategori / Kriteria Menu */
+    .menu-category {
       font-size: 0.8rem;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #7f8c8d;
-      margin-bottom: 10px;
-      font-weight: bold;
+      letter-spacing: 1.5px;
+      color: #6a1b9a; /* Warna kategori ungu pekat */
+      margin-bottom: 12px;
+      font-weight: 800;
+      margin-top: 25px;
+      background-color: rgba(255,255,255,0.4);
+      padding: 5px 10px;
+      border-radius: 4px;
     }
 
     .nav-menu {
       list-style: none;
-      margin-bottom: 25px;
+      margin-bottom: 5px;
     }
 
     .nav-item {
       padding: 12px 15px;
       background: transparent;
       border: none;
-      color: #bdc3c7;
+      color: #424242;
       width: 100%;
       text-align: left;
       font-size: 1rem;
       cursor: pointer;
-      border-radius: 6px;
+      border-radius: 8px;
       margin-bottom: 5px;
       transition: all 0.3s ease;
       display: block;
+      font-weight: 500;
     }
 
     .nav-item:hover, .nav-item.active {
       background-color: var(--primary-color);
       color: #fff;
-      font-weight: bold;
+      font-weight: 700;
+      box-shadow: 0 4px 6px rgba(142, 36, 170, 0.2);
     }
 
-    /* --- KONTEN UTAMA / AREA HASIL KLIK (KANAN) --- */
+    /* Tampilan Kuis Langsung di Sidebar */
+    .sidebar-quiz-container {
+      margin-top: 10px;
+      background: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      height: 480px; 
+      border: 3px solid #ba68c8;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .sidebar-quiz-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* --- KONTEN UTAMA (KANAN) --- */
     main {
-      margin-left: 300px; /* Memberi ruang agar tidak tertutup sidebar */
+      margin-left: 400px;
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -103,8 +142,9 @@
 
     header {
       background-color: var(--card-bg);
-      padding: 20px 40px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      padding: 25px 40px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+      border-bottom: 1px solid #f0f0f0;
     }
 
     header h1 {
@@ -117,24 +157,23 @@
       flex: 1;
     }
 
-    /* Sistem Halaman Dinamis */
     .page-section {
-      display: none; /* Sembunyikan halaman secara default */
+      display: none;
       background: var(--card-bg);
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+      padding: 35px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
       animation: fadeIn 0.4s ease;
     }
 
     .page-section.active {
-      display: block; /* Tampilkan jika menu aktif */
+      display: block;
     }
 
     .page-section h2 {
       color: var(--primary-color);
-      margin-bottom: 15px;
-      border-bottom: 2px solid #f1f1f1;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #f3e5f5;
       padding-bottom: 10px;
     }
 
@@ -142,40 +181,24 @@
       margin-bottom: 15px;
       line-height: 1.8;
       color: #555;
-    }
-
-    /* Kontainer Kuis di Kolom Kanan (Lebih Luas & Sempurna) */
-    .iframe-main-container {
-      width: 100%;
-      height: 650px; /* Memberikan ruang vertikal yang cukup untuk soal kuis */
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid #e2e8f0;
-      margin-top: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
+      font-size: 1.05rem;
     }
 
     footer {
-      background-color: #222;
-      color: #999;
+      background-color: #fff;
+      color: #777;
       text-align: center;
-      padding: 15px;
-      font-size: 0.85rem;
-      margin-top: auto;
+      padding: 20px;
+      font-size: 0.9rem;
+      border-top: 1px solid #eaeaea;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
+      from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* RESPONSIVE LAYOUT UNTUK LAYAR HP */
+    /* RESPONSIVE LAYOUT UNTUK HP */
     @media (max-width: 992px) {
       body {
         flex-direction: column;
@@ -184,16 +207,13 @@
         width: 100%;
         position: relative;
         height: auto;
-        padding: 15px;
+        padding: 20px;
       }
       main {
         margin-left: 0;
       }
       .content-body {
         padding: 20px;
-      }
-      .iframe-main-container {
-        height: 550px;
       }
     }
   </style>
@@ -205,84 +225,7 @@
       <h2>Pancasila Edu</h2>
     </div>
 
-    <div class="menu-title">Menu Navigasi</div>
+    <div class="menu-category">📖 Materi Utama</div>
     <div class="nav-menu">
-      <button class="nav-item active" onclick="bukaHalaman('beranda', this)">🏠 Beranda</button>
-      <button class="nav-item" onclick="bukaHalaman('sejarah', this)">📜 Sejarah Lahirnya</button>
-      <button class="nav-item" onclick="bukaHalaman('makna-lambang', this)">🛡️ Makna Lambang</button>
-      
-      <button class="nav-item" style="border-left: 4px solid var(--primary-color);" onclick="bukaHalaman('kuis-pancasila', this)">📝 Mulai Kuis Interaktif</button>
-      
-      <button class="nav-item" onclick="bukaHalaman('kontak', this)">📞 Hubungi Kami</button>
-    </div>
-  </aside>
-
-  <main>
-    <header>
-      <h1>Panel Pembelajaran Nasional</h1>
-    </header>
-
-    <div class="content-body">
-      
-      <section id="beranda" class="page-section active">
-        <h2>Selamat Datang di Portal Pancasila</h2>
-        <p>Ini adalah halaman utama website. Anda dapat membaca berbagai informasi penting mengenai ideologi negara melalui menu-menu yang tersedia di <strong>Sidebar Sebelah Kiri</strong>.</p>
-        <p>Silakan klik pilihan <strong>"Mulai Kuis Interaktif"</strong> pada sidebar jika Anda sudah siap untuk menguji wawasan kebangsaan Anda.</p>
-      </section>
-
-      <section id="sejarah" class="page-section">
-        <h2>Sejarah Lahirnya Pancasila</h2>
-        <p>Pancasila dilahirkan melalui proses diskusi panjang para pendiri bangsa yang tergabung dalam BPUPKI. Istilah Pancasila pertama kali diperkenalkan oleh Ir. Soekarno pada tanggal 1 Juni 1945 dalam pidatonya yang monumental.</p>
-        <p>Semenjak itu, tanggal 1 Juni ditetapkan dan diperingati sebagai Hari Lahir Pancasila oleh seluruh rakyat Indonesia.</p>
-      </section>
-
-      <section id="makna-lambang" class="page-section">
-        <h2>Makna Lambang Garuda Pancasila</h2>
-        <p>Garuda Pancasila merupakan lambang negara Indonesia dengan semboyan Bhinneka Tunggal Ika. Burung Garuda melambangkan kekuatan, sementara warna emas melambangkan kemegahan atau kejayaan.</p>
-        <p>Perisai di tengah melambangkan pertahanan bangsa dengan 5 simbol yang mewakili masing-masing sila dari Pancasila itu sendiri.</p>
-      </section>
-
-      <section id="kuis-pancasila" class="page-section">
-        <h2>Uji Kemampuan Wawasan Pancasila Anda</h2>
-        <p>Jawablah seluruh pertanyaan pilihan ganda di bawah ini dengan memilih salah satu opsi jawaban yang paling tepat. Skor Anda akan langsung dihitung secara otomatis setelah menekan tombol kirim.</p>
-        
-        <div class="iframe-main-container">
-          <iframe src="https://script.google.com/macros/s/AKfycbzISoU7vcY2NyK1yO0VFv13tsT265_5bi6uoPCN19mCo9ie_BK815Hhybt5xs9Cew0-/exec"></iframe>
-        </div>
-      </section>
-
-      <section id="kontak" class="page-section">
-        <h2>Hubungi Tim Edukasi</h2>
-        <p>Punya pertanyaan atau masukan mengenai materi dan kuis Pancasila ini? Silakan hubungi kami melalui platform ini.</p>
-        <p>Website ini dibuat secara gratis menggunakan infrastruktur modern Google Apps Script dan di-hosting melalui GitHub Pages.</p>
-      </section>
-
-    </div>
-
-    <footer>
-      <p>&copy; 2026 Portal Pancasila Modern. All Rights Reserved.</p>
-    </footer>
-  </main>
-
-  <script>
-    function bukaHalaman(idHalaman, tombolAktif) {
-      // 1. Sembunyikan semua konten halaman kanan
-      const semuaHalaman = document.querySelectorAll('.page-section');
-      semuaHalaman.forEach(halaman => {
-        halaman.classList.remove('active');
-      });
-
-      // 2. Tampilkan halaman yang dipilih berdasarkan id
-      document.getElementById(idHalaman).classList.add('active');
-
-      // 3. Atur status tombol aktif pada sidebar
-      const semuaTombol = document.querySelectorAll('.nav-item');
-      semuaTombol.forEach(tombol => {
-        tombol.classList.remove('active');
-      });
-      tombolAktif.classList.add('active');
-    }
-  </script>
-
-</body>
-</html>
+      <button class="nav-item active" onclick="bukaHalaman('beranda', this)">🏠 Beranda Pembelajaran</button>
+      <button class="nav-item" onclick="buka
