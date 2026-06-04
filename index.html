@@ -228,4 +228,78 @@
     <div class="menu-category">📖 Materi Utama</div>
     <div class="nav-menu">
       <button class="nav-item active" onclick="bukaHalaman('beranda', this)">🏠 Beranda Pembelajaran</button>
-      <button class="nav-item" onclick="buka
+      <button class="nav-item" onclick="bukaHalaman('sejarah', this)">📜 Sejarah Lahirnya</button>
+      <button class="nav-item" onclick="bukaHalaman('makna-lambang', this)">🛡️ Makna & Arti Lambang</button>
+    </div>
+
+    <div class="menu-category">🎯 Kuis & Evaluasi</div>
+    <div class="sidebar-quiz-container">
+      <iframe src="https://script.google.com/macros/s/AKfycbzISoU7vcY2NyK1yO0VFv13tsT265_5bi6uoPCN19mCo9ie_BK815Hhybt5xs9Cew0-/exec"></iframe>
+    </div>
+
+    <div class="menu-category">📞 Informasi Lanjutan</div>
+    <div class="nav-menu">
+      <button class="nav-item" onclick="bukaHalaman('kontak', this)">ℹ️ Tentang & Kontak</button>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <h1>Panel Pembelajaran Nasional</h1>
+    </header>
+
+    <div class="content-body">
+      
+      <section id="beranda" class="page-section active">
+        <h2>Selamat Datang di Portal Pancasila</h2>
+        <p>Anda dapat membaca berbagai informasi penting mengenai ideologi negara pada halaman ini dengan mengklik menu yang telah dikategorikan di sidebar sebelah kiri.</p>
+        <p>Selain itu, Anda bisa langsung mengisi <strong>Kuis Interaktif</strong> pada bagian <em>Kuis & Evaluasi</em> di sidebar. Kuis dapat langsung dijawab tanpa perlu berpindah halaman.</p>
+      </section>
+
+      <section id="sejarah" class="page-section">
+        <h2>Sejarah Lahirnya Pancasila</h2>
+        <p>Pancasila dilahirkan melalui proses diskusi panjang para pendiri bangsa yang tergabung dalam BPUPKI. Istilah Pancasila pertama kali diperkenalkan oleh Ir. Soekarno pada tanggal 1 Juni 1945 dalam pidatonya yang monumental.</p>
+        <p>Semenjak itu, tanggal 1 Juni ditetapkan dan diperingati sebagai Hari Lahir Pancasila oleh seluruh rakyat Indonesia.</p>
+      </section>
+
+      <section id="makna-lambang" class="page-section">
+        <h2>Makna Lambang Garuda Pancasila</h2>
+        <p>Garuda Pancasila merupakan lambang negara Indonesia dengan semboyan Bhinneka Tunggal Ika. Burung Garuda melambangkan kekuatan, sementara warna emas melambangkan kemegahan atau kejayaan.</p>
+        <p>Perisai di tengah melambangkan pertahanan bangsa dengan 5 simbol yang mewakili masing-masing sila dari Pancasila itu sendiri.</p>
+      </section>
+
+      <section id="kontak" class="page-section">
+        <h2>Pusat Informasi & Kontak</h2>
+        <p>Website edukasi ini dikembangkan untuk memfasilitasi pembelajaran nilai-nilai luhur kebangsaan secara digital dan interaktif.</p>
+        <p>Jika Anda memiliki pertanyaan mengenai materi yang disajikan atau mengalami kendala saat mengerjakan kuis, silakan hubungi tim pengembang melalui portal resmi kami.</p>
+      </section>
+
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Portal Pancasila Edukasi. All Rights Reserved.</p>
+    </footer>
+  </main>
+
+  <script>
+    function bukaHalaman(idHalaman, tombolAktif) {
+      // Sembunyikan semua konten di sebelah kanan
+      const semuaHalaman = document.querySelectorAll('.page-section');
+      semuaHalaman.forEach(halaman => {
+        halaman.classList.remove('active');
+      });
+
+      // Tampilkan konten yang dipilih saja
+      document.getElementById(idHalaman).classList.add('active');
+
+      // Ganti indikator warna pada tombol yang aktif
+      const semuaTombol = document.querySelectorAll('.nav-item');
+      semuaTombol.forEach(tombol => {
+        tombol.classList.remove('active');
+      });
+      tombolAktif.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
