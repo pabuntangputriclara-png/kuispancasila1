@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Edukasi Pancasila - Kuis Interaktif</title>
+  <style>
+    :root {
+      --primary-color: #b71c1c; /* Merah Indonesia */
+      --secondary-color: #0d47a1;
+      --text-color: #2c3e50;
+      --bg-color: #f8f9fa;
+      --card-bg: #ffffff;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.7;
+    }
+
+    /* Header Premium */
+    header {
+      background: linear-gradient(135deg, var(--primary-color), #e65100);
+      color: white;
+      padding: 50px 20px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    /* Layout Utama dengan Grid */
+    .container {
+      max-width: 1200px;
+      margin: 30px auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 30px;
+      padding: 0 20px;
+    }
+
+    /* Area Konten Utama */
+    main {
+      background: var(--card-bg);
+      padding: 35px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+    }
+
+    main h2 {
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      border-bottom: 3px solid #f1f1f1;
+      padding-bottom: 10px;
+      font-size: 1.8rem;
+    }
+
+    main p {
+      margin-bottom: 20px;
+      text-align: justify;
+      color: #4f5d75;
+    }
+
+    .sila-list {
+      margin: 25px 0;
+      list-style: none;
+    }
+
+    .sila-item {
+      background: #fff8f8;
+      border-left: 5px solid var(--primary-color);
+      padding: 15px;
+      margin-bottom: 12px;
+      border-radius: 0 8px 8px 0;
+      font-weight: 600;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+    /* Area Sidebar Kuis (Sticky Effect) */
+    aside {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .widget {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      border-top: 6px solid var(--primary-color);
+      position: sticky;
+      top: 20px;
+    }
+
+    .widget h3 {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      color: #222;
+      text-align: center;
+    }
+
+    /* Kontainer iFrame Agar Responsif */
+    .iframe-container {
+      position: relative;
+      width: 100%;
+      height: 560px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      background-color: #fff;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #111;
+      color: #7f8c8d;
+      text-align: center;
+      padding: 25px;
+      margin-top: 60px;
+      font-size: 0.9rem;
+    }
+
+    /* Responsif untuk Smartphone */
+    @media (max-width: 900px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+      .widget {
+        position: relative;
+        top: 0;
+      }
+      header h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Portal Edukasi Wawasan Kebangsaan</h1>
+    <p>Media Pembelajaran Nilai-Nilai Luhur Pancasila Interaktif</p>
+  </header>
+
+  <div class="container">
+    
+    <main>
+      <h2>Mengenal 5 Sila Pancasila</h2>
+      <p>Pancasila merupakan dasar negara serta falsafah hidup bangsa Indonesia. Setiap sila di dalamnya mengandung nilai luhur yang wajib diterapkan oleh seluruh warga negara dalam kehidupan bermasyarakat, berbangsa, dan bernegara.</p>
+      
+      <ul class="sila-list">
+        <li class="sila-item">1. Ketuhanan Yang Maha Esa</li>
+        <li class="sila-item">2. Kemanusiaan yang Adil dan Beradab</li>
+        <li class="sila-item">3. Persatuan Indonesia</li>
+        <li class="sila-item">4. Kerakyatan yang Dipimpin oleh Hikmat Kebijaksanaan dalam Permusyawaratan/Perwakilan</li>
+        <li class="sila-item">5. Keadilan Sosial bagi Seluruh Rakyat Indonesia</li>
+      </ul>
+
+      <p>Setelah Anda memahami kelima sila di atas beserta maknanya, Anda dipersilakan untuk menguji wawasan kebangsaan Anda melalui kuis interaktif yang telah kami sediakan di panel sebelah kanan.</p>
+    </main>
+
+    <aside>
+      <div class="widget">
+        <h3>Uji Kemampuan Anda!</h3>
+        <div class="iframe-container">
+          <iframe src="https://script.google.com/macros/s/AKfycbzISoU7vcY2NyK1yO0VFv13tsT265_5bi6uoPCN19mCo9ie_BK815Hhybt5xs9Cew0-/exec"></iframe>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Portal Pancasila Interaktif. Hosted Free on GitHub Pages.</p>
+  </footer>
+
+</body>
+</html>
